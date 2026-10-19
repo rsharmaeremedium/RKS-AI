@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Momentum — Life & Body Coach</title>
+  <meta name="description" content="Offline-first PWA assistant that balances work and life while transforming your body from 100kg to muscular, with movement like a 25 year old." />
+  <meta name="theme-color" content="#0A0C10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Momentum" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/favicon.png" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <!-- Sidebar (desktop) -->
+    <aside class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26"><path d="M4 24 L12 12 L18 19 L28 6" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="6" r="3.2" fill="currentColor"/></svg>
+        </span>
+        <span class="brand-name">Momentum</span>
+      </div>
+
+      <nav class="side-nav">
+        <a href="#/today"    data-nav="today"><span class="ico" data-ico="home"></span><span>Today</span></a>
+        <a href="#/body"     data-nav="body"><span class="ico" data-ico="dumbbell"></span><span>Body</span></a>
+        <a href="#/fuel"     data-nav="fuel"><span class="ico" data-ico="flame"></span><span>Fuel</span></a>
+        <a href="#/flow"     data-nav="flow"><span class="ico" data-ico="clock"></span><span>Flow</span></a>
+        <a href="#/move"     data-nav="move"><span class="ico" data-ico="stretch"></span><span>Move</span></a>
+        <a href="#/progress" data-nav="progress"><span class="ico" data-ico="chart"></span><span>Progress</span></a>
+        <a href="#/coach"    data-nav="coach"><span class="ico" data-ico="chat"></span><span>Coach</span></a>
+        <a href="#/settings" data-nav="settings"><span class="ico" data-ico="gear"></span><span>Settings</span></a>
+      </nav>
+
+      <div class="side-foot">
+        <div class="mini-stat">
+          <div class="mini-stat-k">Streak</div>
+          <div class="mini-stat-v" id="side-streak">0d</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-k">Movement age</div>
+          <div class="mini-stat-v" id="side-mage">—</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="install-btn" hidden>Install app</button>
+      </div>
+    </aside>
+
+    <!-- Top bar -->
+    <header class="topbar">
+      <button class="icon-btn only-mobile" id="mobile-brand" aria-label="Home">
+        <svg viewBox="0 0 32 32" width="22" height="22"><path d="M4 24 L12 12 L18 19 L28 6" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="28" cy="6" r="3.2" fill="currentColor"/></svg>
+      </button>
+      <h1 class="page-title" id="page-title">Today</h1>
+      <div class="topbar-actions">
+        <div class="clock" id="top-clock" aria-hidden="true"></div>
+        <button class="icon-btn" id="quick-focus" title="Start focus timer" aria-label="Start focus timer"><span class="ico" data-ico="timer"></span></button>
+        <button class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme"><span class="ico" data-ico="sun"></span></button>
+        <a class="icon-btn" href="#/coach" title="Coach" aria-label="Coach"><span class="ico" data-ico="chat"></span></a>
+      </div>
+    </header>
+
+    <!-- View container -->
+    <main id="view" class="view" tabindex="-1"></main>
+
+    <!-- Bottom tab bar (mobile) -->
+    <nav class="tabbar" aria-label="Primary mobile">
+      <a href="#/today" data-nav="today"><span class="ico" data-ico="home"></span><span class="tab-l">Today</span></a>
+      <a href="#/body"  data-nav="body"><span class="ico" data-ico="dumbbell"></span><span class="tab-l">Body</span></a>
+      <a href="#/fuel"  data-nav="fuel"><span class="ico" data-ico="flame"></span><span class="tab-l">Fuel</span></a>
+      <a href="#/flow"  data-nav="flow"><span class="ico" data-ico="clock"></span><span class="tab-l">Flow</span></a>
+      <a href="#/move"  data-nav="move"><span class="ico" data-ico="stretch"></span><span class="tab-l">Move</span></a>
+      <a href="#/progress" data-nav="progress" class="tab-more"><span class="ico" data-ico="chart"></span><span class="tab-l">More</span></a>
+    </nav>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <div id="modal-root"></div>
+  <div id="onboarding-root"></div>
+
+  <noscript>
+    <div style="padding:24px;font:16px system-ui;color:#fff;background:#0A0C10">
+      Momentum needs JavaScript enabled.
+    </div>
+  </noscript>
+
+  <script type="module" src="./js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(e => console.warn('SW registration failed', e));
+      });
+    }
+  </script>
+</body>
+</html>

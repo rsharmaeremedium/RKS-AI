@@ -1,0 +1,24 @@
+{
+  "name": "Momentum — Life & Body Coach",
+  "short_name": "Momentum",
+  "description": "Balance work and life while transforming your body — training, fuel, focus and movement age, fully offline.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A0C10",
+  "theme_color": "#0A0C10",
+  "categories": ["health", "fitness", "lifestyle", "productivity"],
+  "lang": "en",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Log weight", "url": "./index.html#/progress" },
+    { "name": "Today's workout", "url": "./index.html#/body" },
+    { "name": "Mobility routine", "url": "./index.html#/move" }
+  ]
+}
